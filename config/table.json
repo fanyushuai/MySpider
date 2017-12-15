@@ -1,0 +1,9 @@
+{
+    "news": {
+		"title": "String",
+        "content": "String",
+        "author_name":"String",
+        "cover":"String",
+        "create_time": "Date"
+    }
+}
