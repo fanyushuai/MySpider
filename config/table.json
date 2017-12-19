@@ -5,5 +5,11 @@
         "author_name":"String",
         "cover":"String",
         "create_time": "Date"
+    },
+    "blog": {
+    	"title": "String",
+        "content": "String",
+        "author_name":"String",
+        "create_time": "Date"
     }
 }
