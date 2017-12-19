@@ -11,5 +11,11 @@
         "content": "String",
         "author_name":"String",
         "create_time": "Date"
+    },
+    "videos": {
+    	"title":"String",
+    	"pic":"String",
+    	"url":"String",
+    	"length":"String"
     }
 }
