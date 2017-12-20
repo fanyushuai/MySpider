@@ -6,7 +6,7 @@
         "cover":"String",
         "create_time": "Date"
     },
-    "blog": {
+    "blogs": {
     	"title": "String",
         "content": "String",
         "author_name":"String",
