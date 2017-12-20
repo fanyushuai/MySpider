@@ -46,7 +46,7 @@ function startRequest(url) {
 						//console.log($(".BlogContent").text());
 						content = $(".BlogContent").html();
 						
-						MongoDB.save("news", {title: title,author_name:author_name,content:content}, function (err, rs) {
+						MongoDB.save("blogs", {title: title,author_name:author_name,content:content}, function (err, rs) {
 							//console.log(rs);
 						});
 					});
