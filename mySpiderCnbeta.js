@@ -50,15 +50,30 @@ function startRequest(x) {
 						console.log("获取详情信息错误："+err);
 					});
 				}
-				
 			});
-			
-			
 		});
-
 	}).on('error', function(err) {
 		console.log(err);
 	});
-
 }
-startRequest(url); // 主程序开始运行
+
+
+function test(url) {
+	// 采用http模块向服务器发起一次get请求
+	http.request(url, function (serverFeedback) {  
+        if (serverFeedback.statusCode == 200) {  
+            var body = "";  
+            serverFeedback.on('data', function (data) { body += data; })  
+                          .on('end', function () { res.send(200, body); });  
+        }  
+        else {  
+            res.send(500, "error");  
+        }  
+    });  
+    req.write(data + "\n");  
+    req.end();  
+}
+
+test("http://www.cnbeta.com/home/more?&type=catid|24&page=2&_csrf=VEpBPtQWNeWNB43R7YmCmH4hmERjp5bHLfbkmord0SHgLF6pCp2cQ3skPtqrX9DQeTBi61vAp5JLwSNb07rspw%3D%3D&_=1513835508864");
+
+//startRequest(url); // 主程序开始运行
