@@ -267,5 +267,3 @@ DB.prototype.where = function (table_name, conditions, options, callback) {
 };
 
 module.exports = new DB;
-
-DB.prototype.remove("blogs",{},function(err,res){});

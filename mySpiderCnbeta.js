@@ -74,6 +74,6 @@ function test(url) {
     req.end();  
 }
 
-test("http://www.cnbeta.com/home/more?&type=catid|24&page=2&_csrf=VEpBPtQWNeWNB43R7YmCmH4hmERjp5bHLfbkmord0SHgLF6pCp2cQ3skPtqrX9DQeTBi61vAp5JLwSNb07rspw%3D%3D&_=1513835508864");
+//test("http://www.cnbeta.com/home/more?&type=catid|24&page=2&_csrf=VEpBPtQWNeWNB43R7YmCmH4hmERjp5bHLfbkmord0SHgLF6pCp2cQ3skPtqrX9DQeTBi61vAp5JLwSNb07rspw%3D%3D&_=1513835508864");
 
-//startRequest(url); // 主程序开始运行
+startRequest(url); // 主程序开始运行
