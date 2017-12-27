@@ -7,8 +7,8 @@ var MongoDB = require('./dbUtil');
 
 var rule = new schedule.RecurrenceRule();
 
-rule.hour = 21;
-rule.minute = 33;
+rule.hour = 15;
+rule.minute = 49;
 
 /**
  * 每天24点清除数据，重新获取
