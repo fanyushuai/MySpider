@@ -8,15 +8,19 @@ var mongoose = require('mongoose');
 var logger = require('pomelo-logger').getLogger('mongodb-log');
 
 var options = {
-    db_user: "",
-    db_pwd: "",
+    db_user: "testDba",
+    db_pwd: "testDba",
     db_host: "localhost",
     db_port: 27017,
     db_name: "test"
 };
 
 var dbURL = "mongodb://" + options.db_user + ":" + options.db_pwd + "@" + options.db_host + ":" + options.db_port + "/" + options.db_name;
-mongoose.connect(dbURL);
+mongoose.connect(dbURL,{
+	  useMongoClient: true,
+	  connectTimeoutMS: 1000,
+	  promiseLibrary: require('bluebird')
+});
 
 mongoose.connection.on('connected', function (err) {
     if (err) logger.error('Database connection failure');
@@ -147,6 +151,7 @@ DB.prototype.updateData = function (table_name, conditions, update_fields, callb
  * @param callback 回调方法
  */
 DB.prototype.remove = function (table_name, conditions, callback) {
+	console.log(table_name);
     var node_model = this.getConnection(table_name);
     node_model.remove(conditions, function (err, res) {
         if (err) {

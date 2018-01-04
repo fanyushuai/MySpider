@@ -4,12 +4,12 @@ var cheerio = require('cheerio');
 var request = require('request');
 var MongoDB = require('./dbUtil');
 var i = 0;
-var url = "http://www.cnbeta.com/category/funny.htm";
+var url = "";
 // 初始url
 
-function startRequest(x) {
+exports.cnBeta = function () {
 	// 采用http模块向服务器发起一次get请求
-	http.get(x,function(res) {
+	http.get('http://www.cnbeta.com/category/funny.htm',function(res) {
 		var html = ''; // 用来存储请求网页的整个html内容
 		var titles = [];
 		res.setEncoding('utf-8'); // 防止中文乱码
@@ -48,32 +48,15 @@ function startRequest(x) {
 						});
 					}).on('error', function(err) {
 						console.log("获取详情信息错误："+err);
+						process.exit();
 					});
-				}
+				};
 			});
 		});
 	}).on('error', function(err) {
 		console.log(err);
+		process.exit();
 	});
-}
+};
 
-
-function test(url) {
-	// 采用http模块向服务器发起一次get请求
-	http.request(url, function (serverFeedback) {  
-        if (serverFeedback.statusCode == 200) {  
-            var body = "";  
-            serverFeedback.on('data', function (data) { body += data; })  
-                          .on('end', function () { res.send(200, body); });  
-        }  
-        else {  
-            res.send(500, "error");  
-        }  
-    });  
-    req.write(data + "\n");  
-    req.end();  
-}
-
-//test("http://www.cnbeta.com/home/more?&type=catid|24&page=2&_csrf=VEpBPtQWNeWNB43R7YmCmH4hmERjp5bHLfbkmord0SHgLF6pCp2cQ3skPtqrX9DQeTBi61vAp5JLwSNb07rspw%3D%3D&_=1513835508864");
-
-startRequest(url); // 主程序开始运行
+//this.startRequest(); // 主程序开始运行
