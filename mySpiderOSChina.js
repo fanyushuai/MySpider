@@ -4,13 +4,14 @@ var cheerio = require('cheerio');
 var request = require('request');
 var MongoDB = require('./dbUtil');
 var i = 1;
-var url = "https://www.oschina.net/action/ajax/get_more_recommend_blog?classification=0&p=";
+var url = "";
 // 初始url
 
 
-function startRequest(url) {
+exports.osChina = function() {
+	console.log('*************进来了***************'+i);
 	// 采用http模块向服务器发起一次get请求
-	https.get(url+i,function(res) {
+	https.get('https://www.oschina.net/action/ajax/get_more_recommend_blog?classification=0&p='+i,function(res) {
 		var html = ''; // 用来存储请求网页的整个html内容
 		var titles = [];
 		res.setEncoding('utf-8'); // 防止中文乱码
@@ -21,6 +22,7 @@ function startRequest(url) {
 		// 监听end事件，如果整个网页内容的html都获取完毕，就执行回调函数
 		res.on('end', function() {
 			var $ = cheerio.load(html); // 采用cheerio模块解析html
+			console.log($);
 			$(".box-aw").each(function(index,item){
 				var time = $(item).find("footer span").eq(2).text();
 				var title = $(item).find("header a").attr("title");
@@ -53,6 +55,7 @@ function startRequest(url) {
 
 				}).on('error', function(err) {
 					console.log("获取详情信息错误："+err);
+					process.exit();
 				});
 			});
 		});
@@ -60,7 +63,8 @@ function startRequest(url) {
 		startRequest(url);
 	}).on('error', function(err) {
 		console.log("获取基本信息错误："+err);
+		process.exit();
 	});
-}
+};
 
-startRequest(url); // 主程序开始运行
+//this.startRequest(); // 主程序开始运行
