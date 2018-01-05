@@ -6,11 +6,11 @@ var schedule = require("node-schedule");
 var MongoDB = require('./dbUtil');
 var mySpiderOSChina = require('./mySpiderOSChina');
 var mySpiderCnbeta = require('./mySpiderCnbeta');
-
+var mySpiderXVIDEOS = require('./mySpiderXVIDEOS');
 var rule = new schedule.RecurrenceRule();
 
-rule.hour = 14;
-rule.minute = 32;
+rule.hour = 17;
+rule.minute = 16;
 
 
 /**
@@ -31,7 +31,10 @@ var blogsJob = schedule.scheduleJob(rule, function(){
 	});
 });
 
-/**
+
 var vediosJob = schedule.scheduleJob(rule, function(){
-	MongoDB.remove("vedios",{},function(err,res){});
-});**/
+	MongoDB.remove("videos",{},function(err,res){
+		console.log("清除视频");
+		mySpiderXVIDEOS.xvideo();
+	});
+});

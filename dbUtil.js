@@ -16,6 +16,7 @@ var options = {
 };
 
 var dbURL = "mongodb://" + options.db_user + ":" + options.db_pwd + "@" + options.db_host + ":" + options.db_port + "/" + options.db_name;
+mongoose.Promise = global.Promise; 
 mongoose.connect(dbURL,{
 	  useMongoClient: true,
 	  connectTimeoutMS: 1000,
