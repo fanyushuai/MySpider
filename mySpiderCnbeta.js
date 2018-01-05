@@ -4,12 +4,13 @@ var cheerio = require('cheerio');
 var request = require('request');
 var MongoDB = require('./dbUtil');
 var i = 0;
-var url = "";
+var url = 'http://www.cnbeta.com/category/funny.htm';
 // 初始url
 
 exports.cnBeta = function () {
+	console.log('开始获取新闻');
 	// 采用http模块向服务器发起一次get请求
-	http.get('http://www.cnbeta.com/category/funny.htm',function(res) {
+	http.get(url,function(res) {
 		var html = ''; // 用来存储请求网页的整个html内容
 		var titles = [];
 		res.setEncoding('utf-8'); // 防止中文乱码
@@ -57,6 +58,7 @@ exports.cnBeta = function () {
 		console.log(err);
 		process.exit();
 	});
+	console.log('获取新闻结束');
 };
 
-//this.startRequest(); // 主程序开始运行
+//this.cnBeta(); // 主程序开始运行

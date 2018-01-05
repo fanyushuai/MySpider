@@ -9,8 +9,8 @@ var mySpiderCnbeta = require('./mySpiderCnbeta');
 
 var rule = new schedule.RecurrenceRule();
 
-rule.hour = 18;
-rule.minute = 12;
+rule.hour = 14;
+rule.minute = 32;
 
 
 /**
